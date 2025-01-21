@@ -94,7 +94,7 @@ ANALISI UNIVARIATA E BIVARIATA CON RELATIVI GRAFICI
 
 Ho deciso inizialmente di rappresentare un Box Plot della feature "EstimatedSalary" per ottenere una visione riassuntiva.
 
- 
+ <img width="482" alt="image" src="https://github.com/user-attachments/assets/d80dea97-be2d-41d4-8169-4fb90377dcb8" />
 
 
 
