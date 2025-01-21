@@ -297,7 +297,7 @@ o	Se il salario è maggiore, l'albero prende in considerazione ulteriori suddivi
 Conclusioni
 L'albero decisionale mostra come l'algoritmo utilizza le informazioni sull'età, salario (sono i fattori più influenti) e genere (preso molto meno in considerazione) per prendere decisioni sul comportamento d'acquisto. 
 
-
+[Classificazione Customer Behaviour](./Albero%20di%20Classificazione%20Customer%20Behaviour.pdf)
 
 
 
