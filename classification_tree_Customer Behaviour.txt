@@ -1,0 +1,58 @@
+|--- Age <= 41.5000
+|   |--- EstimatedSalary <= 91500.0000
+|   |   |--- Age <= 36.5000
+|   |   |   |--- class: NO
+|   |   |--- Age >  36.5000
+|   |   |   |--- EstimatedSalary <= 83500.0000
+|   |   |   |   |--- Age <= 37.5000
+|   |   |   |   |   |--- class: NO
+|   |   |   |   |--- Age >  37.5000
+|   |   |   |   |   |--- class: NO
+|   |   |   |--- EstimatedSalary >  83500.0000
+|   |   |   |   |--- class: YES
+|   |--- EstimatedSalary >  91500.0000
+|   |   |--- Age <= 26.5000
+|   |   |   |--- class: NO
+|   |   |--- Age >  26.5000
+|   |   |   |--- EstimatedSalary <= 116000.0000
+|   |   |   |   |--- EstimatedSalary <= 107500.0000
+|   |   |   |   |   |--- class: YES
+|   |   |   |   |--- EstimatedSalary >  107500.0000
+|   |   |   |   |   |--- class: NO
+|   |   |   |--- EstimatedSalary >  116000.0000
+|   |   |   |   |--- class: YES
+|--- Age >  41.5000
+|   |--- Age <= 46.5000
+|   |   |--- EstimatedSalary <= 85000.0000
+|   |   |   |--- EstimatedSalary <= 52000.0000
+|   |   |   |   |--- Age <= 44.5000
+|   |   |   |   |   |--- class: NO
+|   |   |   |   |--- Age >  44.5000
+|   |   |   |   |   |--- class: YES
+|   |   |   |--- EstimatedSalary >  52000.0000
+|   |   |   |   |--- EstimatedSalary <= 73500.0000
+|   |   |   |   |   |--- class: NO
+|   |   |   |   |--- EstimatedSalary >  73500.0000
+|   |   |   |   |   |--- class: NO
+|   |   |--- EstimatedSalary >  85000.0000
+|   |   |   |--- Gender <= 0.5000
+|   |   |   |   |--- class: YES
+|   |   |   |--- Gender >  0.5000
+|   |   |   |   |--- Age <= 45.5000
+|   |   |   |   |   |--- class: YES
+|   |   |   |   |--- Age >  45.5000
+|   |   |   |   |   |--- class: NO
+|   |--- Age >  46.5000
+|   |   |--- EstimatedSalary <= 40500.0000
+|   |   |   |--- class: YES
+|   |   |--- EstimatedSalary >  40500.0000
+|   |   |   |--- EstimatedSalary <= 45000.0000
+|   |   |   |   |--- Age <= 59.5000
+|   |   |   |   |   |--- class: NO
+|   |   |   |   |--- Age >  59.5000
+|   |   |   |   |   |--- class: YES
+|   |   |   |--- EstimatedSalary >  45000.0000
+|   |   |   |   |--- Age <= 52.5000
+|   |   |   |   |   |--- class: YES
+|   |   |   |   |--- Age >  52.5000
+|   |   |   |   |   |--- class: YES
