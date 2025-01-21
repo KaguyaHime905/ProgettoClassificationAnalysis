@@ -4,17 +4,7 @@ INTRODUZIONE
 In questo progetto, è stata condotta un'analisi di Classification Analysis utilizzando un dataset contenente informazioni su 400 clienti di un'azienda. Il dataset includeva variabili descrittive come un ID univoco per ciascun cliente, il genere, l'età e il salario. L'obiettivo principale dell'analisi era prevedere la decisione d'acquisto del cliente, ovvero se ciascun cliente ha deciso di acquistare o meno determinati prodotti offerti dall'azienda.
 
 
-
-
-
-
-
-
-
-
-
 DESCRIZIONE GENERALE	
-
 
 Il lavoro si è sviluppato in diverse fasi, a partire dall'esplorazione e dalla pulizia dei dati fino all'applicazione di diversi algoritmi di machine learning per la classificazione. 
 
@@ -37,15 +27,11 @@ Per poter applicare in modo corretto gli algoritmi di machine learning, ho esegu
 1.	Caricamento e analisi preliminare del dataset
 Ho inizialmente caricato il dataset e analizzato la sua struttura utilizzando alcune funzioni, come .info(), .columns(), e .describe(). Questo mi ha permesso di verificare il numero di righe e colonne, le tipologie di dati, la presenza di eventuali valori mancanti o anomali, e di ottenere una descrizione statistica preliminare dei dati.
 
- 
 2.	Eliminazione della colonna 'User ID'
 La colonna 'User ID' è stata eliminata poiché non aggiunge alcuna informazione utile per la classificazione. L'ID è un identificatore univoco del cliente e non influisce sulla decisione d'acquisto. La sua presenza potrebbe anzi introdurre rumore informativo nei modelli di predizione.
 
 3.	Verifica e gestione dei duplicati
 Dopo aver rimosso la colonna 'User ID', ho verificato la presenza di duplicati nel dataset. L'analisi ha mostrato che erano presenti delle righe duplicate, che sono state successivamente eliminate per garantire che il dataset fosse pulito.
-
- 
-
 
 4.	Riformulazione dei valori della colonna 'Purchased'
 I valori nella colonna 'Purchased', che originariamente erano 0 e 1, sono stati sostituiti rispettivamente con "NO" e "YES", per migliorare la leggibilità del dataset durante le fasi esplorative.
@@ -53,14 +39,8 @@ I valori nella colonna 'Purchased', che originariamente erano 0 e 1, sono stati 
 5.	Sostituzione dei valori della colonna 'Gender'
 La colonna 'Gender', che originariamente conteneva valori categorici ('Male' e 'Female'), è stata trasformata in valori numerici. 'Male' è stato sostituito con 0 e 'Female' con 1. Questa conversione è necessaria per l'algoritmo di classificazione, poiché molti modelli non accettano dati categorici.
 
- 
-
 6.	Descrizione statistica dei dati rimanenti
 Ho posto sotto esame la descrizione della feature, 'EstimatedSalary'. Questo passaggio mi ha fornito informazioni utili, come media, deviazione standard e range dei dati, per una migliore comprensione della loro distribuzione.
-
-            
-
-
 
 Tramite la funzione df.EstimatedSalary.describe(),
 ottengo questo output:
@@ -80,31 +60,13 @@ max      150000.000000     VALORE MASSIMO
 Questo risultato ci verrà utile per l’analisi univariata tramite Box Plot.
 
 
-
-
-
-
-
-
-
-
-
-
 ANALISI UNIVARIATA E BIVARIATA CON RELATIVI GRAFICI
 
 Ho deciso inizialmente di rappresentare un Box Plot della feature "EstimatedSalary" per ottenere una visione riassuntiva.
 
  <img width="482" alt="image" src="https://github.com/user-attachments/assets/d80dea97-be2d-41d4-8169-4fb90377dcb8" />
 
-
-
-RELATIVO CODICE:
-
- 
-
-
 Descrizione del Grafico:
-
 
 1.	Il primo quartile (Q1): corrisponde al 25° percentile, il che significa che il 25% dei salari stimati è inferiore a questo valore. Dal grafico, possiamo stimare che Q1 sia a 43.000. Questo significa che un quarto dei customers ha un salario stimato inferiore a 43.000.
 2.	Mediana: o secondo quartile (Q2), corrisponde al 50° percentile, il che indica che il 50% dei salari stimati è inferiore a questo valore. La mediana si trova al valore di 70.421. Ciò significa che metà dei customers ha un salario stimato inferiore a 70.421.
@@ -120,34 +82,18 @@ Riassumendo:
 •	IQR = 45.000 (Range Interquartile)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 ANALISI BIVARIATA
 
 GENDER - ESTIMATED SALARY
 
- 
-
-RELATIVO CODICE:
-
- 
+<img width="482" alt="image" src="https://github.com/user-attachments/assets/1561a713-4228-4ae6-9149-9daf0855ff96" />
 
 OUTPUT:
 Valori dei quartili per ogni categoria di Gender:
 Gender   Q1          Mediana       Q3
 0              43500.0  71000.0      87000.0		(MALE)
 1              43250.0  68500.0      94500.0		(FEMALE)
+
 Analisi del Grafico
 
 Il boxplot mostra la distribuzione di EstimatedSalary in base al Gender. 
@@ -161,73 +107,49 @@ ANALISI BIVARIATA
 
 ESTIMATED SALARY- PURCHASED
 
- 
-
-RELATIVO CODICE:
-
- 
+<img width="482" alt="image" src="https://github.com/user-attachments/assets/d7275862-012c-4502-8ca2-a958dd4af001" />
 
 OUTPUT:
 Valori dei quartili per ogni categoria di Purchased:
 Purchased  Q1           Mediana   Q3
 NO         	     43750.0  61000.0   78250.0
 YES              41750.0  92000.0  123500.0
+
 Analisi del Grafico
+
 Il boxplot mostra la distribuzione di EstimatedSalary in base al valore assunto dall’attributo Purchased (YES/NO). 
 Ancora prima di osservare i dati ottenuti in output, è evidente la presenza di una correlazione fra i valori di EstimatedSalary con l’esito positivo dell’acquisto, è quindi possibile ipotizzare che il prodotto di acquisto sia più accessibile per individui con un salario più elevato. In questa analisi il fulcro è analizzare le caratteristiche dell’utente che decide di procedere all’acquisto:
 osservando la mediana che corrisponde al valore 92.000 di EstimatedSalary, si evince come il 50% di utenti con uno stipendio inferiore a 92.000 decida comunque di procedere all’acquisto del prodotto. Altrettanto interessante è osservare il valore di Q3 corrispondente al valore di 123.500, ossia il 75% di utenti che decide di procedere all’acquisto presenta un salario pari o inferiore a tale cifra. La cifra massima rappresentata dagli utenti che decidono di procedere all’acquisto supera addirittura i 140.000. 
 Altro accorgimento importante, sempre dal punto di vista QUANTITATIVO: si noti la concentrazione del 25% di utenti il cui stipendio oscilla fra i 92.000 e i 123.000 e l’altro 25% il cui stipendio oscilla fra i 41.750 e i 92.000 estremamente diluito in questo intervallo.
 
-
-
-
-
 SCATTERPLOT ESTIMATED SALARY – AGE
 
- 
-
-
-
-
-RELATIVO CODICE:
-
- 
+ <img width="482" alt="image" src="https://github.com/user-attachments/assets/d0f82a4f-5af0-4efe-892d-d38a98d1eb1d" />
 
 Analisi del Grafico
 Lo  scatterplot mostra la relazione tra EstimatedSalary e l’età (Age). I punti sono distribuiti in modo abbastanza disperso su tutto il grafico, senza presentare una correlazione lineare (positiva o negativa) tra l’età e lo stipendio. Da questa rappresentazione quindi l’età non sembra influenzare lo stipendio.
 Interessante è notare che gli stipendi sono variabili per tutte le età, indicando che ci sono persone con stipendi molto diversi all’interno di ogni fascia di età.
 
-
 GRAFICO TORTA PERCENTUALE UOMO-DONNA
 
-
+<img width="482" alt="image" src="https://github.com/user-attachments/assets/66e350fe-112f-41e1-9413-3b4581d54683" />
  
-
-
 GRAFICO TORTA PURCHASED
 
- 
+<img width="482" alt="image" src="https://github.com/user-attachments/assets/ee4c0b15-6f1f-4484-8835-bd8b502f3f37" />
 
-
-
-RELATIVO CODICE:
-
- 
 
 Col comando autopct='%1.1f%%' ottengo la percentuale con una cifra decimale.
 
 
 ALGORITMO DI CLASSIFICAZIONE CODICE:
 
- 
+ <img width="482" alt="image" src="https://github.com/user-attachments/assets/a9b57e7f-2ca7-4e82-9fd5-44f482fbac51" />
  
 
 
 Decision Tree
 Per la fase di classificazione di questo progetto ho utilizzato un Decision Tree Classifier (Albero di Decisione).
-
-
-
 
 
 ALGORITMO DI CLASSIFICAZIONE
@@ -245,9 +167,6 @@ Al fine dell’addestramento del modello, il dataset iniziale è stato suddiviso
 •	Test set (30%): Utilizzato per testare le performance del modello su dati ‘sconosciuti’, possiamo definirli nuovi.
 La suddivisione viene effettuata tramite la funzione train_test_split(), impostando una dimensione del test set del 30% e un random_state=0 (chiamato anche ‘seme’) per rendere nuovamente riproducibili i risultati.
 
-
-
-
 Ricerca della profondità ottimale dell'albero
 Uno dei parametri più importanti per un albero decisionale è la sua profondità (max_depth), che determina il livello massimo di suddivisione dei nodi. Un albero troppo profondo può risultare ‘overfitted’, ossia troppo specializzato nel riprodurre i dati di addestramento, mentre un albero troppo poco profondo potrebbe essere ‘underfitted’, ossia incapace di catturare relazioni complesse nei dati.
 Sulla base di queste considerazioni ho effettuato una ricerca della profondità ottimale eseguendo un ciclo su diversi livelli di profondità (da 1 a 8) tramite il codice livelli=range(1,9). 
@@ -256,10 +175,6 @@ Da questa analisi, la profondità ottimale risultante è stata 5, per ottenere u
 
 Addestramento e valutazione del modello
 Una volta determinata la profondità ottimale, ho addestrato il modello di Decision Tree con la profondità impostata a 5 e con un seme = 1 sempre per permettere la riproducibilità del risultato. 
-
-
-
-
 
 Tramite questo codice:
 
@@ -279,29 +194,8 @@ E si crea un data frame contenente una colonna denominata in questo caso columns
 Si calcola infine l’accuratezza, ossia si fa un confronto fra le etichette predette dal modello addestrato e le ETICHETTE ORIGINALI DEL DATASET INIZIAZLE (della cui accuratezza siamo certi al 100%): accuratezza=accuracy_score(y_test,etichette_predette)
 
 Nel caso specifico è risultata essere 89.47%. 
+
 L'accuratezza indica la percentuale di elementi nel test set che sono stati classificati correttamente. Un'accuratezza del 89.47% indica che il modello riesce a prevedere correttamente il comportamento d'acquisto della maggior parte dei clienti.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 RAPPRESENTAZIONE TESTUALE DELL’ALBERO
@@ -382,30 +276,27 @@ Percorso per clienti di età ≤ 41.5 anni
 1.	EstimatedSalary ≤ 91.500: Viene effettuata una nuova suddivisione in base all'età.
 o	Se l'età è inferiore o uguale a 36.5 anni, il modello prevede che il cliente non acquisterà il prodotto (class: NO).
 o	Se l'età è superiore a 36.5 anni, l'algoritmo si concentra sul salario stimato:
-	Se il salario è inferiore a 83.500, viene considerata nuovamente l'età, ma tutti i rami portano alla previsione di non acquisto.
-	Se il salario supera 83.500, il cliente acquisterà il prodotto (class: YES).
+o	Se il salario è inferiore a 83.500, viene considerata nuovamente l'età, ma tutti i rami portano alla previsione di non acquisto.
+o	Se il salario supera 83.500, il cliente acquisterà il prodotto (class: YES).
 2.	EstimatedSalary > 91.500: A questo punto, viene effettuata una nuova suddivisione basata sull'età:
 o	Se l'età è inferiore o uguale a 26.5 anni, il cliente non acquisterà (class: NO).
 o	Se l'età è maggiore di 26.5 anni, la previsione si basa sul salario stimato:
-	Se il salario è inferiore a 116.000, vengono fatte ulteriori verifiche sul salario, portando a predizioni sia di acquisto per valori di salario inferiore a 107.500, che di non acquisto per valori di salario superiori a 107.500.
-	Se il salario è superiore a 116.000, il cliente acquisterà (class: YES).
-
-
-
-
+o	Se il salario è inferiore a 116.000, vengono fatte ulteriori verifiche sul salario, portando a predizioni sia di acquisto per valori di salario inferiore a 107.500, che di non acquisto per valori di salario superiori a 107.500.
+o	Se il salario è superiore a 116.000, il cliente acquisterà (class: YES).
 
 Percorso per clienti di età > 41.5 anni
 1.	Age ≤ 46.5 anni:
 o	Se il salario stimato è inferiore a 52.000, l'albero si concentra ancora sull'età, con predizioni sia di acquisto che di non acquisto a seconda della fascia di età, più precisamente per utenti di età inferiore a 44 anni, l’etichetta predetta è NO; per utenti con età superiore a 44 anni, l’etichetta predetta è YES.
 o	Se il salario è maggiore, il genere del cliente gioca un ruolo:
-	Se il cliente è maschio (Gender = 0), acquista (class: YES).
-	Se è femmina (Gender = 1), l'albero continua a suddividere per stipendi, portando a previsioni sia di acquisto per un EstimatedSalary <= 45.500, che di non acquisto per valori di EstimatedSalary > 45.500.
+o	Se il cliente è maschio (Gender = 0), acquista (class: YES).
+o	Se è femmina (Gender = 1), l'albero continua a suddividere per stipendi, portando a previsioni sia di acquisto per un EstimatedSalary <= 45.500, che di non acquisto per valori di EstimatedSalary > 45.500.
 2.	Age > 46.5 anni:
 o	Se il salario è inferiore a 40.500, il cliente acquisterà (class: YES).
 o	Se il salario è maggiore, l'albero prende in considerazione ulteriori suddivisioni basate su età e salario, con predizioni sia di acquisto che di non acquisto.
 
 Conclusioni
-Senza entrare troppo nel dettaglio, l'albero decisionale mostra come l'algoritmo utilizza le informazioni sull'età, salario (sono i fattori più influenti) e genere (preso molto meno in considerazione) per prendere decisioni sul comportamento d'acquisto. 
+L'albero decisionale mostra come l'algoritmo utilizza le informazioni sull'età, salario (sono i fattori più influenti) e genere (preso molto meno in considerazione) per prendere decisioni sul comportamento d'acquisto. 
+
 
 
 
